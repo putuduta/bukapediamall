@@ -1,9 +1,11 @@
+import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
 
 	
 	Scanner scan = new Scanner(System.in);
+	Random rand = new Random();
 	
 	//Menu beli pulsa
 	public void beliPulsa() {
@@ -17,6 +19,27 @@ public class Main {
 			System.out.print(">> ");
 			pilih = scan.nextInt();
 			clearScreen();
+			
+			if(pilih == 1) {
+				int noHp = 0, saldo = 0, hargaSaldo = 0;
+
+				System.out.print("Masukan no hp : ");
+				noHp = scan.nextInt();
+				try {
+
+				} catch (Exception e) {
+					System.out.println("Input harus angka");
+				}
+				 
+				System.out.print("Jumlah saldo yang diinginkan: ");
+				saldo = scan.nextInt();
+				
+				hargaSaldo = saldo + (saldo * 10/100);
+				System.out.println("Harga saldo adalah: " + hargaSaldo);
+	
+				
+			}
+			
 		} while (pilih != 4);
 
 	}
@@ -33,6 +56,17 @@ public class Main {
 			System.out.print(">> ");
 			pilih = scan.nextInt();
 			clearScreen();
+			
+			if(pilih == 1) {
+				String nama;
+				int harga;
+				System.out.print("Masukan nama barang : ");
+				nama = scan.nextLine();
+				scan.nextLine(); 
+				System.out.print("Harga : " + rand.nextInt(100000));
+			}
+			
+			
 		} while (pilih != 4);
 		
 	}
