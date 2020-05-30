@@ -13,6 +13,8 @@ public class Main {
 	ArrayList<Pembelian> arrPulsa = new ArrayList<Pembelian>();
 	ArrayList<Pembelian> arrBarang = new ArrayList<Pembelian>();
 	
+	int ma = 0;
+	
 	public void addPulsa() {
 		Pulsa pulsa = new Pulsa();
 		
