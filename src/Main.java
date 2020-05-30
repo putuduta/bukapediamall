@@ -1,14 +1,57 @@
+import java.util.ArrayList;
 import java.util.Random;
+import pembelian.*;
 import java.util.Scanner;
 
-public class Main {
 
+public class Main {
 	
 	Scanner scan = new Scanner(System.in);
 	Random rand = new Random();
 	
+	//make arrayList object
+	ArrayList<Pembelian> arrPulsa = new ArrayList<Pembelian>();
+	ArrayList<Pembelian> arrBarang = new ArrayList<Pembelian>();
+	
+	public void addPulsa() {
+		Pulsa pulsa = new Pulsa();
+		
+		int noHp = 0, saldo = 0, hargaSaldo = 0;				
+
+		System.out.print("Masukan no hp : ");
+		noHp = scan.nextInt();
+		try {
+
+		} catch (Exception e) {
+			System.out.println("Input harus angka");
+		}
+		 
+		System.out.print("Jumlah saldo yang diinginkan: ");
+		saldo = scan.nextInt();
+		
+		hargaSaldo = saldo + (saldo * 10/100);
+		System.out.println("Harga saldo adalah: " + hargaSaldo);
+			
+		pulsa.setNoHp(noHp);
+		pulsa.setHarga(hargaSaldo);
+	
+		arrPulsa.add(pulsa);
+	}
+	
+	public void cekPulsabyHarga() {
+
+		
+		for (int i = 0; i < arrPulsa.size(); i++) {
+			Pembelian p = arrPulsa.get(i);
+			System.out.println(p.getHarga());
+			Pulsa pl = (Pulsa) p;
+			System.out.println(pl.getNoHp());
+		}
+	}
+	
 	//Menu beli pulsa
 	public void beliPulsa() {
+		
 		
 		int pilih = 0;
 		do {
@@ -21,31 +64,49 @@ public class Main {
 			clearScreen();
 			
 			if(pilih == 1) {
-				int noHp = 0, saldo = 0, hargaSaldo = 0;
-
-				System.out.print("Masukan no hp : ");
-				noHp = scan.nextInt();
-				try {
-
-				} catch (Exception e) {
-					System.out.println("Input harus angka");
-				}
-				 
-				System.out.print("Jumlah saldo yang diinginkan: ");
-				saldo = scan.nextInt();
+				addPulsa();
 				
-				hargaSaldo = saldo + (saldo * 10/100);
-				System.out.println("Harga saldo adalah: " + hargaSaldo);
-	
-				
+			} else if (pilih == 2) {
+				cekPulsabyHarga();
 			}
 			
 		} while (pilih != 4);
 
 	}
 	
+	public void addBarang() {
+		
+		Barang barang = new Barang();
+		
+		String nama;
+		int harga;
+		System.out.print("Masukan nama barang : ");
+		nama = scan.nextLine();
+		scan.nextLine();
+		harga = rand.nextInt(100000);
+		System.out.print("Harga : " + harga);
+		System.out.println("");
+		
+		barang.setNama(nama);
+		barang.setHarga(harga);
+		
+		arrBarang.add(barang);
+	}
+	
+	public void cekBarangbyHarga() {
+				
+		for (int i = 0; i < arrBarang.size(); i++) {
+			Pembelian p = arrBarang.get(i);
+			System.out.println(p.getHarga());
+			Barang br = (Barang) p;
+			System.out.println(br.getNama());
+		}
+	}
+	
+	
 	//Menu beli barang
 	public void beliBarang() {
+		
 		
 		int pilih = 0;
 		do {
@@ -58,12 +119,9 @@ public class Main {
 			clearScreen();
 			
 			if(pilih == 1) {
-				String nama;
-				int harga;
-				System.out.print("Masukan nama barang : ");
-				nama = scan.nextLine();
-				scan.nextLine(); 
-				System.out.print("Harga : " + rand.nextInt(100000));
+				addBarang();
+			} else if(pilih == 2) {
+				cekBarangbyHarga();
 			}
 			
 			
